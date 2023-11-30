@@ -74,9 +74,9 @@ public class Player : Entity
         {
             if (currentHealth < maxHealth)
             {
-                timeLeftUntilNextHeal = timerBeforeEachHpHeal;
+                timeLeftUntilNextHeal += timerBeforeEachHpHeal;
                 currentHealth++;
-                ui.UpdateHealthbar((float)currentHealth / (float)maxHealth);
+                ui.UpdateHealthbar(currentHealth, maxHealth);
             }
         }
         else
@@ -307,7 +307,7 @@ public class Player : Entity
     {
         base.TakeDamage(damage, knockbackForce, knockbackDuration);
 
-        ui.UpdateHealthbar((float)currentHealth / (float)maxHealth);
+        ui.UpdateHealthbar(currentHealth, maxHealth);
     }
 
     protected override void Die()
